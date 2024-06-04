@@ -41,8 +41,13 @@ public abstract class Account{
 	
 	//operações de conta
 	
-	public void withdraw(double balance) {
-		this.balance -= balance; 
+	public void withdraw(double balance) throws NobalanceExceptions {
+		if (this.balance >= balance) {
+			this.balance -= balance; 
+		}
+		else {
+        	throw new NobalanceExceptions();
+		}
 	}
 	
 	public void deposit(double balance) {
