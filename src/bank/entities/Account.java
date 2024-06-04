@@ -17,7 +17,7 @@ public abstract class Account{
 	public Account(Client client) {
 		this.agency = Account.AGENCY_NUMBER;
 		this.numberAccount = NUMBER_ACCOUNT_GENERATED++;
-		this.operation = operationTest(accountType);;
+		this.operation = operationTest(accountType);
 		this.client = client;
 	}
 	
@@ -29,6 +29,7 @@ public abstract class Account{
     }
 		
 	public int operationTest(String accountType) {
+		this.accountType = accountType;
 		if(accountType == "Savings Account") {
 			return operation = 321;
 		}

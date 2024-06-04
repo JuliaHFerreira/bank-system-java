@@ -29,10 +29,13 @@ public class Main {
         } catch (InvalidCpfException e) {
             System.out.println("Erro ao configurar CPF do cliente: " + e.getMessage());
         }
-
+        
         // Criando contas
         Account savingsAccount = new SavingsAccount(client1);
         Account currentAccount = new CurrentAccount(client2);
+        
+        savingsAccount.operationTest(null);
+        currentAccount.operationTest(null);
 
         // Adicionando contas ao banco
         List<Account> accounts = new ArrayList<>();

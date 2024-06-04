@@ -8,7 +8,8 @@ public class SavingsAccount extends Account{
 	
 	@Override
 	public int operationTest(String accountType) {
-		return super.operationTest(this.accountType);
+		accountType = this.accountType;
+		return super.operationTest(accountType);
 	}
 	
 	public SavingsAccount(Client client) {
