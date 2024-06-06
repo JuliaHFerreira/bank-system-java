@@ -4,6 +4,8 @@ import bank.exceptions.NobalanceExceptions;
 
 public class CurrentAccount extends Account{
 	
+	private static final double TAX = 0.025;
+	
 	private String accountType = "Current Account";
 	
 	@Override
@@ -18,7 +20,7 @@ public class CurrentAccount extends Account{
 	
 	@Override
 	public void transfer(Account originAccount, Account destinyAccount, double value) throws NobalanceExceptions {
-		value = value + (value*0.025); //tax
+		originAccount.withdraw(value*TAX);
 		super.transfer(originAccount, destinyAccount, value);
 	}
 

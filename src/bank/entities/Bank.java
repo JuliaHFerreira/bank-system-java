@@ -11,6 +11,10 @@ public class Bank {
 		this.bankName = bankName;
 	}
 	
+	public String getBankName() {
+		return bankName;
+	}
+	
 	public List<Account> getAccounts(){
 		return accounts;
 	}

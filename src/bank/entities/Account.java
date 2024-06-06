@@ -7,12 +7,12 @@ public abstract class Account{
 	private static final int AGENCY_NUMBER = 202;
 	private static int NUMBER_ACCOUNT_GENERATED = 1000001;
 	
-	protected int agency;
-	protected int numberAccount;
-	protected String accountType;
-	protected int operation;
-	protected double balance;
-	protected Client client;
+	private int agency;
+	private int numberAccount;
+	private String accountType;
+	private int operation;
+	private double balance;
+	private Client client;
 	
 	public Account(Client client) {
 		this.agency = Account.AGENCY_NUMBER;
@@ -20,14 +20,7 @@ public abstract class Account{
 		this.operation = operationTest(accountType);
 		this.client = client;
 	}
-	
-	public void TransferA(int agency, int operation, int numberAccount, double balance) {
-		this.agency = agency;
-        this.operation = operation;
-        this.numberAccount = numberAccount;
-        this.balance = balance;
-    }
-		
+			
 	public int operationTest(String accountType) {
 		this.accountType = accountType;
 		if(accountType == "Savings Account") {
@@ -41,24 +34,25 @@ public abstract class Account{
 	
 	//operações de conta
 	
-	public void withdraw(double balance) throws NobalanceExceptions {
-		if (this.balance >= balance) {
-			this.balance -= balance; 
+	public void withdraw(double balanceWith) throws NobalanceExceptions {
+		if (this.balance >= balanceWith) {
+			this.balance -= balanceWith; 
 		}
 		else {
         	throw new NobalanceExceptions();
 		}
 	}
 	
-	public void deposit(double balance) {
-		this.balance += balance; 
+	public void deposit(double balanceDeposit) {
+		this.balance += balanceDeposit; 
 	}
  
 	public void transfer(Account originAccount, Account destinyAccount, double value) throws NobalanceExceptions {
         if (originAccount.getBalance() >= value) {
         	originAccount.withdraw(value);
         	destinyAccount.deposit(value);
-            System.out.println("Transferência realizada com sucesso!");
+        	System.out.println();
+            System.out.println("===Transferência realizada com sucesso!===");
         } else {
         	throw new NobalanceExceptions();
         }

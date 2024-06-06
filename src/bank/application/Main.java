@@ -13,24 +13,32 @@ import bank.exceptions.NobalanceExceptions;
 
 public class Main {
     public static void main(String[] args) {
+    	
+        Bank bank = new Bank();
+        bank.setBankName("Meu Banco");
+        
+        System.out.println("===================================");
+        System.out.println(bank.getBankName());
+        System.out.println("===================================\n");
+   
         // Criando clientes
     	Client client1 = new Client();
+    	Client client2 = new Client();
         try {
             client1.setName("Alice");
             client1.setCpf("12345678901");
         } catch (InvalidCpfException e) {
             System.out.println("Erro ao configurar CPF do cliente: " + e.getMessage());
         }
-
-        Client client2 = new Client();
+        
         try {
-            client2.setName("Bob");
-            client2.setCpf("10987654321");
+	        client2.setName("Bob");
+	        client2.setCpf("109854321");
         } catch (InvalidCpfException e) {
             System.out.println("Erro ao configurar CPF do cliente: " + e.getMessage());
         }
         
-        // Criando contas
+        //Criando contas
         Account savingsAccount = new SavingsAccount(client1);
         Account currentAccount = new CurrentAccount(client2);
         
@@ -42,8 +50,6 @@ public class Main {
         accounts.add(savingsAccount);
         accounts.add(currentAccount);
 
-        Bank bank = new Bank();
-        bank.setBankName("Meu Banco");
         bank.setAccount(accounts);
 
         // Realizando depósitos
@@ -53,7 +59,8 @@ public class Main {
         // Exibindo saldo inicial
         System.out.println("Saldo inicial da conta poupança:");
         savingsAccount.printExtractInformation();
-
+        
+        System.out.println();
         System.out.println("Saldo inicial da conta corrente:");
         currentAccount.printExtractInformation();
 
@@ -65,9 +72,11 @@ public class Main {
         }
 
         // Exibindo saldo final
+        System.out.println();
         System.out.println("Saldo final da conta poupança:");
         savingsAccount.printExtractInformation();
-
+        
+        System.out.println();
         System.out.println("Saldo final da conta corrente:");
         currentAccount.printExtractInformation();
     }
