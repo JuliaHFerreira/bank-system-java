@@ -33,7 +33,7 @@ public class Main {
         
         try {
 	        client2.setName("Bob");
-	        client2.setCpf("109854321");
+	        client2.setCpf("10987654321");
         } catch (InvalidCpfException e) {
             System.out.println("Erro ao configurar CPF do cliente: " + e.getMessage());
         }
